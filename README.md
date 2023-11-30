@@ -5,16 +5,42 @@
 This project is a Task Management Application built using React, allowing users to manage tasks by adding, editing, deleting, and marking tasks as completed. It includes various components such as Task List, Add Task Modal/Form, and Edit Task Modal/Form.
 
 ## Project Structure
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── TaskList.js
-│   │   ├── AddTaskModal.js
-│   │   ├── EditTaskModal.js
-│   ├── App.js
-│   ├── index.js
-├── README.md
-├── package.json
+- src/
+  - Components/
+    - TaskList.js
+    - AddTaskModal.js
+  - pages/
+    - TaskListPage.js
+    - AddTaskPage.js
+    - EditTaskPage.js
+  - utils/
+    - localStorage.js
+  - tests/
+  - App.js
+  - index.js
+- Item 3
+
+
+
+/src
+  /components
+    TaskList.js
+    AddTaskModal.js
+    EditTaskModal.js
+  /pages
+    TaskListPage.js
+    AddTaskPage.js
+    EditTaskPage.js
+  /utils
+    localStorage.js
+  /tests
+    TaskList.test.js
+    AddTaskModal.test.js
+    EditTaskModal.test.js
+  App.js
+  index.js
+
+
 
 
 Log Ingestor and Query Interface
