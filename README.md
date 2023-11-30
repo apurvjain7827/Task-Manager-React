@@ -1,3 +1,5 @@
+![guru admin approval](https://github.com/apurvjain7827/Task-Manager-React/assets/97018481/536790ad-45ff-4830-8160-e66d71fc468d)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
