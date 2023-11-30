@@ -33,6 +33,19 @@ This project is a Task Management Application built using React, allowing users 
 
 - **Edit Task Modal/Form Component:** Allows editing task name, description, priority level and due date.
 
+## State Management
+- **React State:** Utilized within each component to manage their respective functionalities.
+- **State Lifting:** Implemented for sharing state between components when necessary.
+
+## Routing
+- **React Router:** Implemented for navigation between task list, add task, and edit task pages.
+- 
+## LocalStorage
+- **Browser's Local Storage:** Utilized to persist tasks, ensuring data persistence even after page refresh.
+
+## Styling
+- Applied using CSS and CSS framework (i.e., Bootstrap) for a visually appealing and user-friendly interface.
+
 
 Log Ingestor and Query Interface
 
