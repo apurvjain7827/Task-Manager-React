@@ -18,29 +18,20 @@ This project is a Task Management Application built using React, allowing users 
   - tests/
   - App.js
   - index.js
-- Item 3
 
+## Design Choices
 
+![taskList](https://github.com/apurvjain7827/Task-Manager-React/assets/97018481/29e9b1da-0096-425f-9e99-c68372f21b5b)
 
-/src
-  /components
-    TaskList.js
-    AddTaskModal.js
-    EditTaskModal.js
-  /pages
-    TaskListPage.js
-    AddTaskPage.js
-    EditTaskPage.js
-  /utils
-    localStorage.js
-  /tests
-    TaskList.test.js
-    AddTaskModal.test.js
-    EditTaskModal.test.js
-  App.js
-  index.js
+- **Task List Component:** Displays tasks, allows marking tasks as completed, deletion of tasks, edit, priority and due date. Includes Sorting on the basis of Completion Status and Priority. Pagination is also enabled
 
+![addTask](https://github.com/apurvjain7827/Task-Manager-React/assets/97018481/ffd23e54-7047-4e90-b011-2fcd6d8d9009)
 
+- **Add Task Modal/Form Component:** Includes a modal/form for adding new tasks with fields for task name, description, priority level and due date.
+
+![editPage](https://github.com/apurvjain7827/Task-Manager-React/assets/97018481/a94d8b03-6647-43d5-8a21-317c5d835a37)
+
+- **Edit Task Modal/Form Component:** Allows editing task name, description, priority level and due date.
 
 
 Log Ingestor and Query Interface
