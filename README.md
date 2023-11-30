@@ -1,10 +1,21 @@
-# Dyte-Assignment
+# Task Management Application using React
 
 ## Description
 
-This project is a Log Ingestor and Query Interface designed to efficiently handle vast volumes of log data. The system provides routes & functions for ingesting logs and querying log data using full-text search or specific field filters. The log ingestor is built using Node.js, JavaScript, and Elastic Search database for log storage. Passport.js is used for user authentication and authorization.
+This project is a Task Management Application built using React, allowing users to manage tasks by adding, editing, deleting, and marking tasks as completed. It includes various components such as Task List, Add Task Modal/Form, and Edit Task Modal/Form.
 
-## Getting Started
+## Project Structure
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── TaskList.js
+│   │   ├── AddTaskModal.js
+│   │   ├── EditTaskModal.js
+│   ├── App.js
+│   ├── index.js
+├── README.md
+├── package.json
+
 
 Log Ingestor and Query Interface
 
