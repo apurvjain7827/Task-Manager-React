@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import TaskList from './Components/TaskList';
+import AddTaskModal from './Components/AddTaskModal';
+import TaskListPage from './pages/TaskListPage';
+import AddTaskPage from './pages/AddTaskPage';
+import Navbar from './pages/Navbar';
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+// import '@fortawesome/fontawesome-free/css/all.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <AddTaskPage />
+      <TaskListPage /> */}
+      <Navbar/>
+      <Outlet/>
     </div>
   );
 }
