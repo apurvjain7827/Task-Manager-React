@@ -1,78 +1,236 @@
-![guru admin approval](https://github.com/apurvjain7827/Task-Manager-React/assets/97018481/536790ad-45ff-4830-8160-e66d71fc468d)
-- Item 1
-- Item 2
-  - Subitem A
-  - Subitem B
-- Item 3
+# Dyte-Assignment
 
+## Description
 
-# Getting Started with Create React App
+This project is a Log Ingestor and Query Interface designed to efficiently handle vast volumes of log data. The system provides routes & functions for ingesting logs and querying log data using full-text search or specific field filters. The log ingestor is built using Node.js, JavaScript, and Elastic Search database for log storage. Passport.js is used for user authentication and authorization.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
 
-## Available Scripts
+Log Ingestor and Query Interface
 
-In the project directory, you can run:
+Overview
+This project is a Log Ingestor and Query Interface designed to efficiently handle vast volumes of log data. The system provides a simple interface for querying log data using full-text search or specific field filters. The log ingestor is built using Node.js, JavaScript, and Elastic Search database for log storage. Passport.js is used for user authentication and authorization.
 
-### `npm start`
+Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Clone the repository:
+git clone https://github.com/apurvjain7827/Dyte-Assignment.git
+cd repository-directory
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install dependencies:
+npm install
 
-### `npm test`
+Configure Elastic Search:
+Ensure Elastic Search is installed and running.
+Update the Elastic Search connection details in the configuration file if needed.
+Elastic Search will by-default run on the port http://localhost:9200
+If Elastic Search is running secure mode by-defualt, change the following parameters to false:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+xpack.security.enabled
+xpack.security.enrollment.enabled
 
-### `npm run build`
+Run the application:
+node app.js
+The log ingestor will be running on http://localhost:3000.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Log Ingestor/Indexing logs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The indexLogs function is responsible for indexing multiple logs into the specified Elasticsearch index. It uses the Elasticsearch bulk API for improved efficiency in handling log data arrays.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Searching Logs
 
-### `npm run eject`
+The searchLogs function performs a search query on the Elasticsearch index based on specified filters such as timestamp, level, message, etc. It constructs a query using the Elasticsearch Query DSL and returns the search results.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### User Authentication and Authorization
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- The user can Register/Login himself.
+- The user can register himself by accessing this API.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  URL:\*\* `POST http://localhost:3000/auth/register`
+  request payload: {
+  "email": "apurvjain7827@gmail.com",
+  "username": "Apurv987",
+  "password": "abcdefgh"
+  }
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  This will return an accessToken through which we can authorize a user.
 
-## Learn More
+  response: {
+  "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU1YTBmYTRjMTNmOTBkNTRmNDQxNmQxIn0sImlhdCI6MTcwMDQwMTUyNX0.zZmAWQGwKkc14EPSPXdUQAYZPeWzY3Ek8qmql4wrsoc"
+  }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Basic authentication is implemented with a dummy user (username and password). You can use these credentials for authentication. We have used passportJs for authentication.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  Example :
 
-### Code Splitting
+  URL:\*\* `POST http://localhost:3000/auth/login`
+  request payload: {
+  "username": "Apurv987",
+  "password": "abcdefgh"
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  This will return an accessToken through which we can authorize a user.
 
-### Analyzing the Bundle Size
+  {
+  "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU1YTBmYTRjMTNmOTBkNTRmNDQxNmQxIn0sImlhdCI6MTcwMDQwMTUyNX0.zZmAWQGwKkc14EPSPXdUQAYZPeWzY3Ek8qmql4wrsoc"
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Authorization is based on token authentication. Obtain a token after successful authentication to access protected endpoints.
 
-### Making a Progressive Web App
+## Logs Routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The logs routes define the API endpoints for indexing and searching logs. These routes are protected, requiring user authentication and admin privileges.
 
-### Advanced Configuration
+In all APIs, you have to pass the accessToken in the header of the request you got while logging in for authorization.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. **Ingest a New Log:**
 
-### Deployment
+   - **URL:** `POST http://localhost:3000/logs/index`
+   - **Description:** Add new Logs to the dataset.
+   - **Sample Request:**
+     POST http://localhost:3000/logs/index
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+     Example :
 
-### `npm run build` fails to minify
+     Sample Input Body
+     {
+     "indexName": "sunday_logs",
+     "logDataArray": [
+     {
+     "timestamp": "2023-09-15T10:00:00Z",
+     "level": "error",
+     "message": "Failed to complete the function 2",
+     "resourceId": "server-1235",
+     "traceId": "abc-xyz-124",
+     "spanId": "span-987",
+     "commit": "5e5342a",
+     "metadata": {
+     "parentResourceId": "server-0987"
+     }
+     }
+     ]
+     }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+     Returned Object :
+     {
+     "errors": false,
+     "took": 70,
+     "items": [
+     {
+     "index": {
+     "_index": "sunday_logs",
+     "_id": "GHHe54sBocmRxC7w9foB",
+     "_version": 1,
+     "result": "created",
+     "_shards": {
+     "total": 2,
+     "successful": 1,
+     "failed": 0
+     },
+     "_seq_no": 6,
+     "_primary_term": 2,
+     "status": 201
+     }
+     }
+     ]
+     }
+
+2. **Search a Record:**
+
+   - **URL:** `GET http://localhost:3000/logs/search`
+   - **Description:** Search a/multiple record from the dataset.
+   - **Sample Request:**
+
+     `GET http://localhost:3000/logs/search`
+
+   Sample Input Body if we only want to search with a field
+   {
+   "indexName": "sunday_logs",
+   "fieldsToSearch": [
+   { "fieldName": "level", "fieldValue": "error" }
+   ]
+   }
+
+   Sample Input Body if we only want to search with the combination of fields and Timestamp
+   {
+   "indexName": "sunday_logs",
+   "fieldsToSearch": [
+   { "fieldName": "level", "fieldValue": "error" }
+   ]
+   "timestampFilter": {
+   "startTime": "2023-09-15T09:00:00Z",
+   "endTime": "2023-09-15T10:00:00Z"
+   }
+   }
+
+   Returned Object :
+   [
+   {
+   "_index": "sunday_logs",
+   "_id": "L-9P5osB6qYzKbs9Byk-",
+   "_score": 1.2076393,
+   "_source": {
+   "timestamp": "2023-09-15T10:00:00Z",
+   "level": "error",
+   "message": "Failed to complete the function 2",
+   "resourceId": "server-1235",
+   "traceId": "abc-xyz-124",
+   "spanId": "span-987",
+   "commit": "5e5342a",
+   "metadata": {
+   "parentResourceId": "server-0987"
+   }
+   }
+   },
+   {
+   "_index": "sunday_logs",
+   "_id": "MO9_5osB6qYzKbs9TCmP",
+   "_score": 1.2076393,
+   "_source": {
+   "timestamp": "2023-09-15T10:00:00Z",
+   "level": "error",
+   "message": "Failed to complete the function 2",
+   "resourceId": "server-1235",
+   "traceId": "abc-xyz-124",
+   "spanId": "span-987",
+   "commit": "5e5342a",
+   "metadata": {
+   "parentResourceId": "server-0987"
+   }
+   }
+   },
+   {
+   "_index": "sunday_logs",
+   "_id": "F3HX54sBocmRxC7wJfor",
+   "_score": 1.2076393,
+   "_source": {
+   "timestamp": "2023-09-15T10:00:00Z",
+   "level": "error",
+   "message": "Failed to complete the function 2",
+   "resourceId": "server-1235",
+   "traceId": "abc-xyz-124",
+   "spanId": "span-987",
+   "commit": "5e5342a",
+   "metadata": {
+   "parentResourceId": "server-0987"
+   }
+   }
+   },
+   {
+   "_index": "sunday_logs",
+   "_id": "GHHe54sBocmRxC7w9foB",
+   "_score": 1.2076393,
+   "_source": {
+   "timestamp": "2023-09-15T10:00:00Z",
+   "level": "error",
+   "message": "Failed to complete the function 2",
+   "resourceId": "server-1235",
+   "traceId": "abc-xyz-124",
+   "spanId": "span-987",
+   "commit": "5e5342a",
+   "metadata": {
+   "parentResourceId": "server-0987"
+   }
+   }
+   }
+   ]
