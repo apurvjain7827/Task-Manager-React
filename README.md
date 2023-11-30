@@ -47,7 +47,7 @@ This project is a Task Management Application built using React, allowing users 
 - Applied using CSS and CSS framework (i.e., Bootstrap) for a visually appealing and user-friendly interface.
 
 ## Getting Started
-- **Click On Deployed Link:** [npm test](https://task-manager-apurvjain.netlify.app/)
+- **Click On Deployed Link:** [Link Text]([URL](https://task-manager-apurvjain.netlify.app/))
   OR
 - **Clone the Repository:** git clone https://github.com/apurvjain7827/Task-Manager-React.git
 - **Install Dependencies:** npm install
