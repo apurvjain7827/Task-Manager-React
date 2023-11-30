@@ -1,4 +1,10 @@
 ![guru admin approval](https://github.com/apurvjain7827/Task-Manager-React/assets/97018481/536790ad-45ff-4830-8160-e66d71fc468d)
+- Item 1
+- Item 2
+  - Subitem A
+  - Subitem B
+- Item 3
+
 
 # Getting Started with Create React App
 
